@@ -11,20 +11,18 @@ public class CubeEditor : MonoBehaviour
 
     TextMesh textMesh;
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
+        // allow snapping in editor
         Vector3 snapPos;
         snapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
         snapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
+        transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
 
+        // label the coords for boxes + naming
         textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = snapPos.x/gridSize + "," + snapPos.z/gridSize;
-
-        transform.position = new Vector3(snapPos.x,0f,snapPos.z);
+        string labelText = snapPos.x/gridSize + "," + snapPos.z/gridSize;
+        textMesh.text = labelText;
+        gameObject.name = labelText;
     }
 }

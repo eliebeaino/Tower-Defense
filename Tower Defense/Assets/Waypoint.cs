@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    // ok to use as this is data class
-    public bool isExplored = false;
-    public Waypoint exploredFrom;
+    //Vector2Int gridPos;
     const int gridSize = 10;
 
-    // public method to get the CONST grid size
+
+    // used in cube editor
     public int GetGridSize()
     {
         return gridSize;
     }
 
-    // public method to get the coords of WP
     public Vector2Int GetGridPos()
     {
         return new Vector2Int(
@@ -24,7 +22,6 @@ public class Waypoint : MonoBehaviour
         );
     }
 
-    // public method to change the cube color
     public void SetTopColor(Color color)
     {
         MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();

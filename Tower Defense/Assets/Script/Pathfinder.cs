@@ -106,14 +106,21 @@ public class Pathfinder : MonoBehaviour
     // create the path discovered from the algorithm working backwards - then reversing it.
     private void CreatePath()
     {
-        path.Add(endWaypoint);
+        SetAsPath(endWaypoint);
         Waypoint previous = endWaypoint.exploredFrom;
         while (previous != startWaypoint)
         {
-            path.Add(previous);
+            SetAsPath(previous);
             previous = previous.exploredFrom;
         }
-        path.Add(startWaypoint);
+        SetAsPath(startWaypoint);
         path.Reverse();
+    }
+
+    // Set as path for the create path & block the tile from being buildable
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        waypoint.isPlacable = false;
     }
 }

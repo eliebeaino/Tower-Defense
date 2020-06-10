@@ -56,8 +56,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385117001641796398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.88, z: -0.2}
+  m_LocalRotation: {x: 0.049684767, y: -0, z: -0, w: 0.998765}
+  m_LocalPosition: {x: 0, y: 5.9686275, z: -0.26858902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1381664292707240390}
@@ -66,7 +66,7 @@ Transform:
   - {fileID: 1101779916181203546}
   m_Father: {fileID: 1879658609427555703}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.696, y: 0, z: 0}
 --- !u!95 &41792822383125940
 Animator:
   serializedVersion: 3
@@ -8039,7 +8039,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -11974,7 +11974,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catapult: {fileID: 1381528270070558978}
-  targetEnemy: {fileID: 0}
-  animator: {fileID: 41792822383125940}
+  catapultAnimator: {fileID: 41792822383125940}
   towerRange: 30
   projectilePartile: {fileID: 4385901622394156399}

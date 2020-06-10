@@ -8,8 +8,8 @@ public class Tower : MonoBehaviour
 {
     [Header("General:")]
     [SerializeField] Transform catapult;
-    [SerializeField] Transform targetEnemy;
-    [SerializeField] Animator animator;
+    Transform targetEnemy;
+    [SerializeField] Animator catapultAnimator;
     [SerializeField] float towerRange = 10f;
     [SerializeField] ParticleSystem projectilePartile;
 
@@ -67,7 +67,7 @@ public class Tower : MonoBehaviour
         if (distanceToEnemy <= towerRange)
         {
             FireAtEnemy(true);
-            animator.SetTrigger("Firing");
+            catapultAnimator.SetTrigger("Firing");
         }
         else
         {

@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour
     [Header("General:")]
     [SerializeField] Transform catapult;
     [SerializeField] Transform targetEnemy;
-
+    [SerializeField] Animator animator;
     [SerializeField] float towerRange = 10f;
     [SerializeField] ParticleSystem projectilePartile;
 
@@ -67,6 +67,7 @@ public class Tower : MonoBehaviour
         if (distanceToEnemy <= towerRange)
         {
             FireAtEnemy(true);
+            animator.SetTrigger("Firing");
         }
         else
         {
@@ -74,11 +75,11 @@ public class Tower : MonoBehaviour
         }
     }
 
-    // Fires at the Enemy
+    // Fires at the Enemy or Stops
     private void FireAtEnemy(bool firingActive)
     {
         var emissionModule = projectilePartile.emission;
-        emissionModule.enabled = firingActive;
+        emissionModule.enabled = firingActive; 
     }
 
 }

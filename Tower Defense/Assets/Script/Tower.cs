@@ -8,7 +8,7 @@ public class Tower : MonoBehaviour
 {
     [Header("General:")]
     [SerializeField] Transform catapult;
-    Transform targetEnemy;
+    [SerializeField] Transform targetEnemy;
 
     [SerializeField] float towerRange = 10f;
     [SerializeField] ParticleSystem projectilePartile;
@@ -23,16 +23,17 @@ public class Tower : MonoBehaviour
             LookAtEnemy();
             ProcessFiring();
         }
+        else
+        {
+            FireAtEnemy(false);
+        }
     }
 
     // defining the target enemy
     private void SetTargetEnemy()
     {
         var sceneEnemies = FindObjectsOfType<EnemyDamage>();
-        if(sceneEnemies.Length ==0)
-        {
-            return;
-        }                                 // it theres no enmies in game, return
+        if(sceneEnemies.Length ==0) return;                           // it theres no enmies in game, return
         Transform closestEnemy = sceneEnemies[0].transform;            // setting the first enemy found as the closest enemy in array
         
         foreach (EnemyDamage testEnemy in sceneEnemies)
@@ -63,7 +64,6 @@ public class Tower : MonoBehaviour
     private void ProcessFiring()
     {
         float distanceToEnemy = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position); //gameobject instead of catapult bcz gameobject refers to the tower initial position
-        print(distanceToEnemy);
         if (distanceToEnemy <= towerRange)
         {
             FireAtEnemy(true);

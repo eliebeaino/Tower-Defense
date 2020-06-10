@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9217432256557789764}
+  - component: {fileID: 639468480856578552}
   - component: {fileID: 7208988880571392649}
   - component: {fileID: 8189070395006574220}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ground Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +28,26 @@ Transform:
   m_GameObject: {fileID: 1347515443274761407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
+  m_LocalScale: {x: 4.8, y: 4.8, z: 4.8}
   m_Children:
   - {fileID: 6181563727220405309}
   - {fileID: 2769492631767096317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &639468480856578552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347515443274761407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999996, y: 1.9999999, z: 2.0000002}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &7208988880571392649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +327,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9037342151625001586}
-  m_Text: 0,0
+  m_Text: 2,1
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1

@@ -27,7 +27,6 @@ public class Pathfinder : MonoBehaviour
         if (path.Count == 0)
         {
             LoadBlocks();
-            //ColorStartAndEnd();
             BreadthFirstSearch();
             CreatePath();
         }
@@ -51,13 +50,6 @@ public class Pathfinder : MonoBehaviour
             }
         }
     } 
-
-    // coloring the start WP and the End WP -- consider moving this outside of this .cs
-    private void ColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.yellow);
-        endWaypoint.SetTopColor(Color.red);
-    }
 
     // pathfinding sequence starts by checking if its running, queueing the start than dequeing it, stopping if it reached the end, exploring neighbouring blocks if it doesn't.
     private void BreadthFirstSearch()

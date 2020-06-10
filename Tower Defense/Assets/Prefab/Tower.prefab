@@ -11951,5 +11951,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   catapult: {fileID: 1381528270070558978}
   targetEnemy: {fileID: 0}
-  towerRange: 100
+  towerRange: 30
   projectilePartile: {fileID: 4385901622394156399}

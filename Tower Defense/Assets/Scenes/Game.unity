@@ -5582,10 +5582,15 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7627178738627068962}
+    - target: {fileID: 852293107568963169, guid: e546ad283ce3ccb4681306cd0458345c,
+        type: 3}
+      propertyPath: towerRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1879658609427555703, guid: e546ad283ce3ccb4681306cd0458345c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.14
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1879658609427555703, guid: e546ad283ce3ccb4681306cd0458345c,
         type: 3}

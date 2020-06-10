@@ -1,46 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
     [Header("General:")]
-    [SerializeField] Transform objectToPan;
+    [SerializeField] Transform catapult;
     [SerializeField] Transform targetEnemy;
 
-    [Header("Projectile info:")]
-    [SerializeField] GameObject projectile;
-    [SerializeField] GameObject firingPosition;
-    [SerializeField] float firingSpeed = 1f;
-    [SerializeField] float projectileSpeed = 10f;
- 
+    [SerializeField] float towerRange = 10f;
+    [SerializeField] ParticleSystem projectilePartile;
+
+
     // Update is called once per frame
     void Update()
     {
-        LookAtEnemy();
-        FireAtEnemy();
+        if (targetEnemy)
+        {
+            LookAtEnemy();
+            ProcessFiring();
+        }
     }
 
     // Rotate towards enemy
     private void LookAtEnemy()
     {
-        objectToPan.LookAt(targetEnemy);
+        catapult.LookAt(targetEnemy);
     }
 
-    // Fires at the Enemy
-    private void FireAtEnemy()
+    // check for enemy nearby to start shooting or turn off if not
+    private void ProcessFiring()
     {
-        if (targetEnemy == true)
+        float distanceToEnemy = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position); //gameobject instead of catapult bcz gameobject refers to the tower initial position
+        print(distanceToEnemy);
+        if (distanceToEnemy <= towerRange)
         {
-            StartCoroutine(FiringRoutine());
+            FireAtEnemy(true);
+        }
+        else
+        {
+            FireAtEnemy(false);
         }
     }
 
-    private IEnumerator FiringRoutine()
+    // Fires at the Enemy
+    private void FireAtEnemy(bool firingActive)
     {
-        GameObject currentProj = Instantiate(projectile, firingPosition.transform.position, Quaternion.identity);
-        currentProj.transform.LookAt(targetEnemy);
-        currentProj.transform.forward = Vector3.MoveTowards(firingPosition.transform.position, targetEnemy.transform.position, projectileSpeed);
-        yield return new WaitForSeconds(firingSpeed);
+        var emissionModule = projectilePartile.emission;
+        emissionModule.enabled = firingActive;
     }
+
 }

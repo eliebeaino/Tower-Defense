@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    float timer = 1f; // time buffer for enemy movement
+    [SerializeField] [Tooltip("Enemy movement speed accross tiles in secs")]
+    float EnemySpeed = 1f;
 
     void Start()
     {         
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
         foreach (Waypoint waypoint in path)
         {
             transform.position = waypoint.transform.position;
-            yield return new WaitForSeconds(timer);
+            yield return new WaitForSeconds(EnemySpeed);
         }
     }
 }

@@ -6,14 +6,27 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [Header("General:")]
+    [Header("General")]
     [SerializeField] Transform catapult;                    // object to pan (using lookat)
     [SerializeField] Animator catapultAnimator;
     [SerializeField] float towerRange = 10f;
+
+    [Header("Assets to store")]
     [SerializeField] ParticleSystem projectileParticle;
+    [SerializeField] AudioClip FireSFX;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] float soundTimer = 2f;
+    float initialTimer;
+    bool soundplayed = false;
+
+    [Header("Assets stored while game runs")]
     public Waypoint baseWaypoint;                           // current location of tower 
-    // state of each tower
     public Transform targetEnemy;
+
+    private void Start()
+    {
+        initialTimer = soundTimer; // setting up intial timer to reset the timer in catapultSFX
+    }
 
     // Update is called once per frame
     void Update()
@@ -75,7 +88,7 @@ public class Tower : MonoBehaviour
         {
             FireAtEnemy(true);
             catapultAnimator.SetBool("Firing", true);
-            GetComponent<AudioSource>().Play();
+            catapultSFX();
         }
         else
         {
@@ -89,5 +102,24 @@ public class Tower : MonoBehaviour
         var emissionModule = projectileParticle.emission;
         emissionModule.enabled = firingActive;
         catapultAnimator.SetBool("Firing", false);
+    }
+
+    // gets called from animator to run sound for catapult firing
+    public void catapultSFX()
+    {
+        if (!soundplayed)
+        {
+            audioSource.PlayOneShot(FireSFX);
+            soundplayed = true;    
+        }
+        else
+        {
+            soundTimer -= Time.deltaTime;
+            if (soundTimer < 0)
+            {
+                soundTimer = initialTimer;
+                soundplayed = false;
+            }
+        }
     }
 }

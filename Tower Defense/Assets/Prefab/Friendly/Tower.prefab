@@ -11938,7 +11938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879658609427555703}
   - component: {fileID: 852293107568963169}
-  - component: {fileID: -8703835006673038485}
+  - component: {fileID: 5536761455988470703}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -11978,8 +11978,11 @@ MonoBehaviour:
   catapultAnimator: {fileID: 41792822383125940}
   towerRange: 30
   projectileParticle: {fileID: 4385901622394156399}
+  FireSFX: {fileID: 8300000, guid: dee8f4bf4e7744b478d4dc6d2f9c7ab1, type: 3}
+  audioSource: {fileID: 5536761455988470703}
   baseWaypoint: {fileID: 0}
---- !u!82 &-8703835006673038485
+  targetEnemy: {fileID: 0}
+--- !u!82 &5536761455988470703
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11989,7 +11992,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dee8f4bf4e7744b478d4dc6d2f9c7ab1, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

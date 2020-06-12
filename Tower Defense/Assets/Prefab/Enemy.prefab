@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1447b44d5f33f4a893f55c1cb9d2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemySpeed: 2
+  EnemySpeed: 5
   isAlive: 1
 --- !u!114 &1737391704
 MonoBehaviour:
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26558cac87608934a83420fb01ec73fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HitPoints: 3
+  HitPoints: 5
   animator: {fileID: 3989194339524263538}
   enemyDespawn: 5
 --- !u!1001 &3989194339531574034

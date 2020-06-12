@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9999996, y: 1.9999999, z: 2.0000002}
-  m_Center: {x: 0, y: -1, z: 0}
+  m_Size: {x: 1.9999996, y: 0.18201748, z: 2.0000002}
+  m_Center: {x: 0, y: -0.09100874, z: 0}
 --- !u!114 &7208988880571392649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +75,6 @@ MonoBehaviour:
   isExplored: 0
   isPlacable: 1
   exploredFrom: {fileID: 0}
-  tower: {fileID: 852293107568963169, guid: e546ad283ce3ccb4681306cd0458345c, type: 3}
 --- !u!1 &2766878751953477951
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +328,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9037342151625001586}
-  m_Text: 2,1
+  m_Text: 0,0
   m_OffsetZ: 0
   m_CharacterSize: 2
   m_LineSpacing: 1

@@ -11977,7 +11977,8 @@ MonoBehaviour:
   catapult: {fileID: 1381528270070558978}
   catapultAnimator: {fileID: 41792822383125940}
   towerRange: 30
-  projectilePartile: {fileID: 4385901622394156399}
+  projectileParticle: {fileID: 4385901622394156399}
+  baseWaypoint: {fileID: 0}
 --- !u!82 &-8703835006673038485
 AudioSource:
   m_ObjectHideFlags: 0

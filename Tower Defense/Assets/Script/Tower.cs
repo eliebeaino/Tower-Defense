@@ -7,12 +7,13 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [Header("General:")]
-    [SerializeField] Transform catapult;
-    Transform targetEnemy;
+    [SerializeField] Transform catapult;                    // object to pan (using lookat)
     [SerializeField] Animator catapultAnimator;
     [SerializeField] float towerRange = 10f;
-    [SerializeField] ParticleSystem projectilePartile;
-
+    [SerializeField] ParticleSystem projectileParticle;
+    public Waypoint baseWaypoint;                           // current location of tower 
+    // state of each tower
+    Transform targetEnemy;
 
     // Update is called once per frame
     void Update()
@@ -79,7 +80,7 @@ public class Tower : MonoBehaviour
     // Fires at the Enemy or Stops
     private void FireAtEnemy(bool firingActive)
     {
-        var emissionModule = projectilePartile.emission;
+        var emissionModule = projectileParticle.emission;
         emissionModule.enabled = firingActive;
         catapultAnimator.SetBool("Firing", false);
     }

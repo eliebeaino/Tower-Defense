@@ -11,7 +11,7 @@ public class Waypoint : MonoBehaviour
     public bool isPlacable = true;   // buildeable slot ?
     public Waypoint exploredFrom;
 
-    [SerializeField] Tower tower;
+
 
     const int gridSize = 10;
 
@@ -30,14 +30,14 @@ public class Waypoint : MonoBehaviour
         );
     }
 
+    // get the current location of mouse - if left click is down, build a tower
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if (isPlacable)
             {
-                Instantiate(tower, transform.position, Quaternion.identity);
-                isPlacable = false;
+                FindObjectOfType<TowerFactory>().AddTower(this);
             }
             else
             {

@@ -13,13 +13,13 @@ public class Tower : MonoBehaviour
     [SerializeField] ParticleSystem projectileParticle;
     public Waypoint baseWaypoint;                           // current location of tower 
     // state of each tower
-    Transform targetEnemy;
+    public Transform targetEnemy;
 
     // Update is called once per frame
     void Update()
     {
         SetTargetEnemy();
-        if (targetEnemy && targetEnemy.GetComponent<EnemyMovement>().isAlive)
+        if (targetEnemy)
         {
             LookAtEnemy();
             ProcessFiring();
@@ -30,14 +30,20 @@ public class Tower : MonoBehaviour
         }
     }
 
-    // defining the target enemy, if there is none exit
+    // defining the target enemy, if there is none exit by emptying the target to null
     private void SetTargetEnemy()
     {
-        var sceneEnemies = FindObjectsOfType<EnemyDamage>();
-        if(sceneEnemies.Length ==0) return;                           // it theres no enmies in game, return
+        var sceneEnemies = FindObjectsOfType<Enemy>();
+
+        // it theres no enmies in game, return null to avoid stuck animation and projectiles
+        // todochange later when projectile is instantiated
+        if (sceneEnemies.Length == 0)
+        {
+            targetEnemy = null; return;
+        }
         Transform closestEnemy = sceneEnemies[0].transform;            // setting the first enemy found as the closest enemy in array
         
-        foreach (EnemyDamage testEnemy in sceneEnemies)
+        foreach (Enemy testEnemy in sceneEnemies)
         {
             closestEnemy = GetClosest(closestEnemy, testEnemy.transform);
         }
@@ -84,5 +90,4 @@ public class Tower : MonoBehaviour
         emissionModule.enabled = firingActive;
         catapultAnimator.SetBool("Firing", false);
     }
-
 }

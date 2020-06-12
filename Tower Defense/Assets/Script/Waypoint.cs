@@ -11,8 +11,6 @@ public class Waypoint : MonoBehaviour
     public bool isPlacable = true;   // buildeable slot ?
     public Waypoint exploredFrom;
 
-
-
     const int gridSize = 10;
 
     // public method to get the CONST grid size
@@ -33,10 +31,13 @@ public class Waypoint : MonoBehaviour
     // get the current location of mouse - if left click is down, build a tower
     private void OnMouseOver()
     {
-        // highlight buildeable tiles
-        if (isPlacable)  this.GetComponentInChildren<Renderer>().material.SetFloat("_Metallic", 0.5f);
+        HighlightBlocks();
+        BuildTowers();
+    }
 
-        // build towers on mouse clock
+    // build towers on mouse clock
+    private void BuildTowers()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             if (isPlacable)
@@ -47,6 +48,19 @@ public class Waypoint : MonoBehaviour
             {
                 print("You can't place that here!");
             }
+        }
+    }
+
+    // highlight buildeable tiles or stop when built upon
+    private void HighlightBlocks()
+    {
+        if (isPlacable)
+        {
+            this.GetComponentInChildren<Renderer>().material.SetFloat("_Metallic", 0.5f);
+        }
+        else
+        {
+            this.GetComponentInChildren<Renderer>().material.SetFloat("_Metallic", 0f);
         }
     }
 

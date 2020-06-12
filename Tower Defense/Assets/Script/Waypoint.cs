@@ -33,6 +33,10 @@ public class Waypoint : MonoBehaviour
     // get the current location of mouse - if left click is down, build a tower
     private void OnMouseOver()
     {
+        // highlight buildeable tiles
+        if (isPlacable)  this.GetComponentInChildren<Renderer>().material.SetFloat("_Metallic", 0.5f);
+
+        // build towers on mouse clock
         if (Input.GetMouseButtonDown(0))
         {
             if (isPlacable)
@@ -44,5 +48,11 @@ public class Waypoint : MonoBehaviour
                 print("You can't place that here!");
             }
         }
+    }
+
+    // revert the highlight on mouse exit
+    private void OnMouseExit()
+    {
+        this.GetComponentInChildren<Renderer>().material.SetFloat("_Metallic", 0f);
     }
 }

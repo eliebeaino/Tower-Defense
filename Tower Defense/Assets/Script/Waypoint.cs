@@ -10,6 +10,9 @@ public class Waypoint : MonoBehaviour
     public bool isExplored = false;  // explored in BFS ?
     public bool isPlacable = true;   // buildeable slot ?
     public Waypoint exploredFrom;
+
+    [SerializeField] Tower tower;
+
     const int gridSize = 10;
 
     // public method to get the CONST grid size
@@ -33,7 +36,8 @@ public class Waypoint : MonoBehaviour
         {
             if (isPlacable)
             {
-                print(gameObject.name);
+                Instantiate(tower, transform.position, Quaternion.identity);
+                isPlacable = false;
             }
             else
             {

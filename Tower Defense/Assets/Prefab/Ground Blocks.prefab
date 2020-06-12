@@ -73,7 +73,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isExplored: 0
+  isPlacable: 1
   exploredFrom: {fileID: 0}
+  tower: {fileID: 852293107568963169, guid: e546ad283ce3ccb4681306cd0458345c, type: 3}
 --- !u!1 &2766878751953477951
 GameObject:
   m_ObjectHideFlags: 0

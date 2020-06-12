@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] [Tooltip("Enemy movement speed accross tiles in secs")]
     float EnemySpeed = 2f;
+    public bool isAlive = true; // changed from enemydamage.cs when enemy is dead
 
     void Start()
     {         
@@ -26,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     //    }
     //}
 
+    // smooth enemy movement 
     int i = 0;
     IEnumerator FollowPath(List<Waypoint> path)
     {
@@ -34,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 randomValue = new Vector3(1, 0, 1) * Random.Range(-0.5f, 0.5f) + path[i].transform.position;
             transform.LookAt(randomValue);
-            while (Vector3.Distance(transform.position, randomValue) >= 0.35f)
+            while (Vector3.Distance(transform.position, randomValue) >= 0.35f && isAlive)  // check if alive to move or stop moving
             {
                 transform.position = Vector3.MoveTowards(transform.position, randomValue, Time.deltaTime * EnemySpeed);
                 yield return null;

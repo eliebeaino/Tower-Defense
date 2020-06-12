@@ -18,7 +18,7 @@ public class Tower : MonoBehaviour
     void Update()
     {
         SetTargetEnemy();
-        if (targetEnemy)
+        if (targetEnemy && targetEnemy.GetComponent<EnemyMovement>().isAlive)
         {
             LookAtEnemy();
             ProcessFiring();
@@ -29,7 +29,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    // defining the target enemy
+    // defining the target enemy, if there is none exit
     private void SetTargetEnemy()
     {
         var sceneEnemies = FindObjectsOfType<EnemyDamage>();
@@ -67,7 +67,8 @@ public class Tower : MonoBehaviour
         if (distanceToEnemy <= towerRange)
         {
             FireAtEnemy(true);
-            catapultAnimator.SetTrigger("Firing");
+            catapultAnimator.SetBool("Firing", true);
+            GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -79,7 +80,8 @@ public class Tower : MonoBehaviour
     private void FireAtEnemy(bool firingActive)
     {
         var emissionModule = projectilePartile.emission;
-        emissionModule.enabled = firingActive; 
+        emissionModule.enabled = firingActive;
+        catapultAnimator.SetBool("Firing", false);
     }
 
 }

@@ -38,17 +38,17 @@ public class Enemy : MonoBehaviour
         Destroy(enemyMovement);
     }
 
+    // when reached the player base, start dealing damage and animate the enemy
     private void OnTriggerEnter(Collider other)
     {
-        print(1);
         if (other.gameObject.tag == "Finish")
         {
-            print(2);
             animator.SetBool("DealDamage", true);
             Destroy(enemyMovement);
         }
     }
 
+    // gets called from animation to do the damage on the player base
     public void damagePlayerBase()
     {
         FindObjectOfType<PlayerBase>().ProcessDmg(enemyDamage);
